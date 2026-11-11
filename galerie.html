@@ -2,278 +2,140 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notre galerie ♡</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-    min-height:100vh;
-    background:linear-gradient(135deg,#fff8fb,#f9e5ed,#fffaf5);
-    color:#805b6d;
-    font-family:'Cormorant Garamond',serif;
-}
-
-header{text-align:center;padding:65px 20px 35px}
-
-header small{
-    letter-spacing:5px;
-    color:#bd8b9f;
-    text-transform:uppercase;
-}
-
-h1{
-    font-family:'Parisienne',cursive;
-    font-size:clamp(55px,9vw,85px);
-    font-weight:normal;
-    color:#bd849c;
-    margin:15px 0;
-}
-
-header p{
-    font-size:19px;
-    line-height:1.6;
-}
-
-.line{
-    width:90px;
-    height:1px;
-    background:#d6b47b;
-    margin:20px auto;
-}
-
-.gallery{
-    max-width:1150px;
-    margin:40px auto;
-    padding:0 25px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.photo{
-    padding:7px;
-    border:1px solid #e9cfda;
-    border-radius:13px;
-    background:#fff9fc;
-    box-shadow:0 10px 30px #bd849c20;
-    cursor:pointer;
-    overflow:hidden;
-    transition:.4s;
-    animation:appear .8s both;
-}
-
-.photo:hover{
-    transform:translateY(-7px);
-    box-shadow:0 15px 35px #bd849c45;
-}
-
-.photo img{
-    width:100%;
-    height:340px;
-    object-fit:cover;
-    display:block;
-    border-radius:8px;
-    transition:.5s;
-}
-
-.photo:hover img{transform:scale(1.04)}
-
-.back{
-    display:block;
-    width:max-content;
-    margin:55px auto;
-    padding:13px 30px;
-    border:1px solid #d6b47b;
-    border-radius:40px;
-    text-decoration:none;
-    color:#9c7185;
-    background:#ffffff90;
-    font-size:18px;
-    transition:.3s;
-}
-
-.back:hover{
-    background:#d9aabd;
-    color:white;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    letter-spacing:3px;
-    color:#bd8b9f;
-}
-
-.viewer{
-    position:fixed;
-    inset:0;
-    background:#160d18ed;
-    z-index:10;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:30px;
-}
-
-.viewer.active{display:flex}
-
-.viewer img{
-    max-width:85%;
-    max-height:85vh;
-    object-fit:contain;
-    border:2px solid #e6c7d4;
-    border-radius:10px;
-}
-
-.viewer button{
-    position:absolute;
-    border:0;
-    background:#ffffff20;
-    color:white;
-    cursor:pointer;
-    border-radius:50%;
-    width:48px;
-    height:48px;
-    font-size:30px;
-}
-
-.close{top:25px;right:25px}
-.prev{left:25px;top:50%}
-.next{right:25px;top:50%}
-
-.counter{
-    position:absolute;
-    bottom:20px;
-    color:white;
-    letter-spacing:3px;
-}
-
-.petal{
-    position:fixed;
-    top:-30px;
-    color:#dba8bc;
-    opacity:.6;
-    pointer-events:none;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    to{transform:translateY(110vh) rotate(600deg);opacity:0}
-}
-
-@keyframes appear{
-    from{opacity:0;transform:translateY(20px)}
-    to{opacity:1;transform:translateY(0)}
-}
-
-@media(max-width:850px){
-    .gallery{grid-template-columns:repeat(2,1fr)}
-    .photo img{height:300px}
-}
-
-@media(max-width:550px){
-    .gallery{grid-template-columns:1fr}
-    .photo img{height:380px}
-    .viewer img{max-width:95%}
-    .prev{left:5px}
-    .next{right:5px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff2f6">
+  <title>La galerie de Malissia ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
 </head>
-
 <body>
 
-<header>
-    <small>Un petit morceau de notre univers</small>
-    <h1>Malissia ♡</h1>
-    <div class="line"></div>
-    <p>
-        Parce que certains sourires méritent<br>
-        bien plus qu'une simple photo.
-    </p>
-</header>
+  <div class="petals" aria-hidden="true"></div>
 
-<main class="gallery">
+  <header class="site-header">
+    <a class="brand" href="index.html">Malissia <span>♡</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Accueil</a>
+      <a class="active" href="galerie.html">Galerie</a>
+      <a href="son.html">Une petite étoile</a>
+      <a href="message.html">Un dernier mot</a>
+    </nav>
+  </header>
 
-    <div class="photo"><img src="Malisia%201.jpg" alt="Photo 1"></div>
-    <div class="photo"><img src="Malisia%202.jpg" alt="Photo 2"></div>
-    <div class="photo"><img src="Malisia%203.jpg" alt="Photo 3"></div>
-    <div class="photo"><img src="Malisia%204.jpg" alt="Photo 4"></div>
-    <div class="photo"><img src="Mallissia%205.jpg" alt="Photo 5"></div>
-    <div class="photo"><img src="Malisia%206.jpg" alt="Photo 6"></div>
-    <div class="photo"><img src="Malisia%207.jpg" alt="Photo 7"></div>
-    <div class="photo"><img src="Malisia%208.jpg" alt="Photo 8"></div>
+  <main class="page-container">
+    <section class="page-heading fade-in">
+      <p class="eyebrow">Quelques instants précieux</p>
+      <h1 class="script-title">La galerie de Malissia</h1>
+      <p class="lead">
+        Huit photos, huit petits instants à retrouver.
+        Cette galerie est un petit morceau de ton univers.
+      </p>
+      <div class="ornament">✧ ♡ ✧</div>
+    </section>
 
-</main>
+    <section class="gallery-grid" aria-label="Galerie de photos">
+      <button class="gallery-item" data-index="0" aria-label="Afficher la photo 1">
+        <img src="Malisia%201.jpg" alt="Photo 1 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="1" aria-label="Afficher la photo 2">
+        <img src="Malisia%202.jpg" alt="Photo 2 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="2" aria-label="Afficher la photo 3">
+        <img src="Malisia%203.jpg" alt="Photo 3 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="3" aria-label="Afficher la photo 4">
+        <img src="Malisia%204.jpg" alt="Photo 4 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="4" aria-label="Afficher la photo 5">
+        <img src="Mallissia%205.jpg" alt="Photo 5 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="5" aria-label="Afficher la photo 6">
+        <img src="Malisia%206.jpg" alt="Photo 6 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="6" aria-label="Afficher la photo 7">
+        <img src="Malisia%207.jpg" alt="Photo 7 de Malissia" loading="lazy">
+      </button>
+      <button class="gallery-item" data-index="7" aria-label="Afficher la photo 8">
+        <img src="Malisia%208.jpg" alt="Photo 8 de Malissia" loading="lazy">
+      </button>
+    </section>
 
-<a class="back" href="index.html">♡ Retour à l'accueil</a>
+    <div class="center-action">
+      <a class="secondary-button" href="son.html">Continuer la découverte ♡</a>
+    </div>
+  </main>
 
-<footer>AVEC TENDRESSE · YANIS ♡</footer>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="closeLightbox" aria-label="Fermer">×</button>
+    <button class="lightbox-arrow previous" id="previousPhoto" aria-label="Photo précédente">‹</button>
+    <img id="lightboxImage" src="" alt="Photo agrandie">
+    <button class="lightbox-arrow next" id="nextPhoto" aria-label="Photo suivante">›</button>
+    <p class="lightbox-counter" id="photoCounter"></p>
+  </div>
 
-<div class="viewer" id="viewer">
-    <button class="close" onclick="closePhoto()">×</button>
-    <button class="prev" onclick="changePhoto(-1)">‹</button>
-    <img id="largePhoto" src="" alt="Photo agrandie">
-    <button class="next" onclick="changePhoto(1)">›</button>
-    <div class="counter" id="counter"></div>
-</div>
+  <footer class="site-footer">Chaque image raconte quelque chose ♡</footer>
 
-<script>
-const photos=[...document.querySelectorAll('.photo img')];
-const viewer=document.getElementById('viewer');
-const large=document.getElementById('largePhoto');
-const counter=document.getElementById('counter');
-let current=0;
+  <script>
+    const photos = [
+      "Malisia%201.jpg",
+      "Malisia%202.jpg",
+      "Malisia%203.jpg",
+      "Malisia%204.jpg",
+      "Mallissia%205.jpg",
+      "Malisia%206.jpg",
+      "Malisia%207.jpg",
+      "Malisia%208.jpg"
+    ];
 
-function showPhoto(){
-    large.src=photos[current].src;
-    counter.textContent=(current+1)+' / '+photos.length;
-}
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const counter = document.getElementById("photoCounter");
+    let currentIndex = 0;
 
-photos.forEach((photo,index)=>{
-    photo.parentElement.onclick=()=>{
-        current=index;
-        showPhoto();
-        viewer.classList.add('active');
-    };
-});
+    function showPhoto(index) {
+      currentIndex = (index + photos.length) % photos.length;
+      lightboxImage.src = photos[currentIndex];
+      counter.textContent = `${currentIndex + 1} / ${photos.length}`;
+    }
 
-function changePhoto(direction){
-    current=(current+direction+photos.length)%photos.length;
-    showPhoto();
-}
+    function openLightbox(index) {
+      showPhoto(index);
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
 
-function closePhoto(){
-    viewer.classList.remove('active');
-}
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
 
-viewer.onclick=e=>{
-    if(e.target===viewer)closePhoto();
-};
+    document.querySelectorAll(".gallery-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        openLightbox(Number(item.dataset.index));
+      });
+    });
 
-document.addEventListener('keydown',e=>{
-    if(!viewer.classList.contains('active'))return;
-    if(e.key==='Escape')closePhoto();
-    if(e.key==='ArrowRight')changePhoto(1);
-    if(e.key==='ArrowLeft')changePhoto(-1);
-});
+    document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+    document.getElementById("previousPhoto").addEventListener("click", () => showPhoto(currentIndex - 1));
+    document.getElementById("nextPhoto").addEventListener("click", () => showPhoto(currentIndex + 1));
 
-setInterval(()=>{
-    const petal=document.createElement('div');
-    petal.className='petal';
-    petal.textContent='✿';
-    petal.style.left=Math.random()*100+'vw';
-    petal.style.fontSize=(12+Math.random()*15)+'px';
-    petal.style.animationDuration=(7+Math.random()*8)+'s';
-    document.body.appendChild(petal);
-    setTimeout(()=>petal.remove(),15000);
-},1000);
-</script>
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowRight") showPhoto(currentIndex + 1);
+      if (event.key === "ArrowLeft") showPhoto(currentIndex - 1);
+    });
+  </script>
 
 </body>
 </html>

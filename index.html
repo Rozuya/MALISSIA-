@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#170e1c">
+
+    <title>Pour Malissia ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(
+                ellipse at center,
+                #513044 0%,
+                #241524 50%,
+                #100b16 100%
+            );
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+                radial-gradient(2px 2px at 70% 20%, #ffe4ef, transparent),
+                radial-gradient(2px 2px at 40% 80%, #fff, transparent),
+                radial-gradient(2px 2px at 85% 65%, #ffe4ef, transparent),
+                radial-gradient(2px 2px at 10% 75%, #fff, transparent);
+            background-size: 250px 250px;
+            animation: sparkle 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes sparkle {
+            from { opacity: .3; }
+            to { opacity: 1; }
+        }
+
+        .intro {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+        }
+
+        .content {
+            max-width: 650px;
+            animation: appear 2s ease forwards;
+        }
+
+        .moon {
+            font-size: 42px;
+            margin-bottom: 30px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .subtitle {
+            color: #e9c8d7;
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(55px, 11vw, 105px);
+            font-weight: normal;
+            letter-spacing: 3px;
+            background: linear-gradient(
+                120deg,
+                #fff,
+                #f5c6d9,
+                #e5c18c,
+                #fff
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 45px #f5c6d933;
+        }
+
+        .description {
+            margin: 30px auto 40px;
+            color: #e9dce4;
+            font-size: 17px;
+            line-height: 1.9;
+            max-width: 430px;
+        }
+
+        .discover {
+            padding: 16px 35px;
+            border: 1px solid #e8c49b;
+            border-radius: 50px;
+            background: linear-gradient(
+                120deg,
+                #d9a6bc,
+                #b982a1
+            );
+            color: #241524;
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        .discover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px #e8b6d866;
+        }
+
+        .signature {
+            position: absolute;
+            bottom: 30px;
+            color: #d9b9c9;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .petal {
+            position: fixed;
+            top: -30px;
+            color: #f3c3d8;
+            opacity: .65;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(600deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width: 600px) {
+            .description {
+                font-size: 15px;
+            }
+
+            .subtitle {
+                letter-spacing: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <main class="intro">
+        <div class="content">
+
+            <div class="moon">🌙</div>
+
+            <p class="subtitle">
+                Un univers créé avec tendresse
+            </p>
+
+            <h1>Malissia</h1>
+
+            <p class="description">
+                Certaines personnes ont une place particulière
+                dans notre vie. Cet univers est simplement
+                une petite façon de te montrer la tienne.
+            </p>
+
+            <button class="discover" onclick="discover()">
+                DÉCOUVRIR TON UNIVERS ♡
+            </button>
+
+        </div>
+
+        <div class="signature">
+            AVEC TENDRESSE · YANIS ♡
+        </div>
+    </main>
+
+    <script>
+        function discover() {
+            alert("La suite de ton univers arrive très bientôt ♡");
+        }
+
+        function createPetal() {
+            const petal = document.createElement("div");
+
+            petal.className = "petal";
+            petal.textContent = "✿";
+
+            petal.style.left = Math.random() * 100 + "vw";
+            petal.style.fontSize = (12 + Math.random() * 15) + "px";
+            petal.style.animationDuration = (7 + Math.random() * 8) + "s";
+
+            document.body.appendChild(petal);
+
+            setTimeout(() => petal.remove(), 15000);
+        }
+
+        setInterval(createPetal, 650);
+    </script>
+
+</body>
+</html>

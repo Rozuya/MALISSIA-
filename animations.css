@@ -1,13 +1,8 @@
 
-/* =====================================
-   MALISSIA — ANIMATIONS
-   ===================================== */
-
-/* Apparition progressive */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(22px);
   }
   to {
     opacity: 1;
@@ -16,121 +11,75 @@
 }
 
 .fade-in {
-  animation: fadeIn 1.2s ease forwards;
+  animation: fadeIn 1.1s ease both;
 }
 
-/* Apparition douce */
+.soft-appear {
+  animation: softAppear 1.5s ease both;
+}
+
 @keyframes softAppear {
   from {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(9px);
+    transform: scale(.96);
   }
   to {
     opacity: 1;
     filter: blur(0);
-  }
-}
-
-.soft-appear {
-  animation: softAppear 1.5s ease forwards;
-}
-
-/* Flottement léger */
-@keyframes floating {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-.float {
-  animation: floating 4s ease-in-out infinite;
-}
-
-/* Pétales de sakura */
-@keyframes sakuraFall {
-  0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.9;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-.sakura-petal {
-  position: fixed;
-  top: -30px;
-  z-index: 10;
-  pointer-events: none;
-  animation: sakuraFall linear infinite;
-}
-
-/* Lueur des textes */
-@keyframes gentleGlow {
-  0%, 100% {
-    text-shadow: 0 0 8px rgba(255, 182, 193, 0.3);
-  }
-  50% {
-    text-shadow: 0 0 22px rgba(255, 182, 193, 0.8);
-  }
-}
-
-.gentle-glow {
-  animation: gentleGlow 3s ease-in-out infinite;
-}
-
-/* Zoom doux des photos */
-@keyframes photoReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
     transform: scale(1);
   }
 }
 
-.photo-reveal {
-  animation: photoReveal 1s ease forwards;
-}
-
-/* Boutons lumineux */
-@keyframes buttonPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 rgba(255, 182, 193, 0);
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+    opacity: 0;
   }
-  50% {
-    box-shadow: 0 0 24px rgba(255, 182, 193, 0.35);
+  12% {
+    opacity: .8;
+  }
+  85% {
+    opacity: .7;
+  }
+  100% {
+    transform: translate3d(45px, 110vh, 0) rotate(360deg);
+    opacity: 0;
   }
 }
 
 .button-pulse {
-  animation: buttonPulse 2.5s ease-in-out infinite;
+  animation: buttonPulse 3s ease-in-out infinite;
 }
 
-/* Transition entre les pages */
-.page-transition {
-  animation: fadeIn 1s ease both;
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px rgba(173,113,139,.2);
+  }
+  50% {
+    box-shadow: 0 10px 32px rgba(201,139,164,.48);
+  }
 }
 
-/* Respect des préférences de mouvement */
+.gallery-item {
+  animation: fadeIn .8s ease both;
+}
+
+.gallery-item:nth-child(2) { animation-delay: .08s; }
+.gallery-item:nth-child(3) { animation-delay: .16s; }
+.gallery-item:nth-child(4) { animation-delay: .24s; }
+.gallery-item:nth-child(5) { animation-delay: .32s; }
+.gallery-item:nth-child(6) { animation-delay: .40s; }
+.gallery-item:nth-child(7) { animation-delay: .48s; }
+.gallery-item:nth-child(8) { animation-delay: .56s; }
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
   }
 }

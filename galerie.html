@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./animations.css">
 </head>
 
 <body>
@@ -20,13 +20,12 @@
   <div class="petals" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="brand" href="index.html">Malissia <span>♡</span></a>
-
+    <a class="brand" href="./index.html">Malissia <span>♡</span></a>
     <nav class="site-nav">
-      <a href="index.html">Accueil</a>
-      <a class="active" href="galerie.html">Galerie</a>
-      <a href="son.html">Une petite étoile</a>
-      <a href="message.html">Un dernier mot</a>
+      <a href="./index.html">Accueil</a>
+      <a class="active" href="./galerie.html">Galerie</a>
+      <a href="./son.html">Une petite étoile</a>
+      <a href="./message.html">Un dernier mot</a>
     </nav>
   </header>
 
@@ -34,55 +33,52 @@
 
     <section class="page-heading fade-in">
       <p class="eyebrow">Quelques instants précieux</p>
-
       <h1 class="script-title">La galerie de Malissia</h1>
-
       <p class="lead">
         Huit photos, huit petits instants à retrouver.
-        Cette galerie est un petit morceau de ton univers.
+        Un petit morceau de ton univers.
       </p>
-
       <div class="ornament">✧ ♡ ✧</div>
     </section>
 
     <section class="gallery-grid" aria-label="Galerie de photos">
 
-      <button class="gallery-item" data-index="0" aria-label="Photo 1">
+      <button class="gallery-item" data-index="0">
         <img src="./Malisia%201.jpg" alt="Photo 1 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="1" aria-label="Photo 2">
+      <button class="gallery-item" data-index="1">
         <img src="./Malisia%202.jpg" alt="Photo 2 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="2" aria-label="Photo 3">
+      <button class="gallery-item" data-index="2">
         <img src="./Malisia%203.jpg" alt="Photo 3 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="3" aria-label="Photo 4">
+      <button class="gallery-item" data-index="3">
         <img src="./Malisia%204.jpg" alt="Photo 4 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="4" aria-label="Photo 5">
+      <button class="gallery-item" data-index="4">
         <img src="./Mallissia%205.jpg" alt="Photo 5 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="5" aria-label="Photo 6">
+      <button class="gallery-item" data-index="5">
         <img src="./Malisia%206.jpg" alt="Photo 6 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="6" aria-label="Photo 7">
+      <button class="gallery-item" data-index="6">
         <img src="./Malisia%207.jpg" alt="Photo 7 de Malissia">
       </button>
 
-      <button class="gallery-item" data-index="7" aria-label="Photo 8">
+      <button class="gallery-item" data-index="7">
         <img src="./Malisia%208.jpg" alt="Photo 8 de Malissia">
       </button>
 
     </section>
 
     <div class="center-action">
-      <a class="secondary-button" href="son.html">
+      <a class="secondary-button" href="./son.html">
         Continuer la découverte ♡
       </a>
     </div>
@@ -90,17 +86,11 @@
   </main>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
-
     <button class="lightbox-close" id="closeLightbox" aria-label="Fermer">×</button>
-
-    <button class="lightbox-arrow previous" id="previousPhoto" aria-label="Photo précédente">‹</button>
-
+    <button class="lightbox-arrow previous" id="previousPhoto" aria-label="Précédente">‹</button>
     <img id="lightboxImage" src="" alt="Photo agrandie">
-
-    <button class="lightbox-arrow next" id="nextPhoto" aria-label="Photo suivante">›</button>
-
+    <button class="lightbox-arrow next" id="nextPhoto" aria-label="Suivante">›</button>
     <p class="lightbox-counter" id="photoCounter"></p>
-
   </div>
 
   <footer class="site-footer">
@@ -127,26 +117,20 @@
 
     function showPhoto(index) {
       currentIndex = (index + photos.length) % photos.length;
-
       lightboxImage.src = photos[currentIndex];
-
-      counter.textContent =
-        (currentIndex + 1) + " / " + photos.length;
+      counter.textContent = `${currentIndex + 1} / ${photos.length}`;
     }
 
     function openLightbox(index) {
       showPhoto(index);
-
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
-
       document.body.classList.add("no-scroll");
     }
 
     function closeLightbox() {
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
-
       document.body.classList.remove("no-scroll");
     }
 
@@ -160,24 +144,17 @@
       .addEventListener("click", closeLightbox);
 
     document.getElementById("previousPhoto")
-      .addEventListener("click", () => {
-        showPhoto(currentIndex - 1);
-      });
+      .addEventListener("click", () => showPhoto(currentIndex - 1));
 
     document.getElementById("nextPhoto")
-      .addEventListener("click", () => {
-        showPhoto(currentIndex + 1);
-      });
+      .addEventListener("click", () => showPhoto(currentIndex + 1));
 
     lightbox.addEventListener("click", event => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
+      if (event.target === lightbox) closeLightbox();
     });
 
     document.addEventListener("keydown", event => {
       if (!lightbox.classList.contains("open")) return;
-
       if (event.key === "Escape") closeLightbox();
       if (event.key === "ArrowRight") showPhoto(currentIndex + 1);
       if (event.key === "ArrowLeft") showPhoto(currentIndex - 1);

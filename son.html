@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f5">
+  <title>Une petite étoile ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #684653;
+      font-family: 'Cormorant Garamond', serif;
+      background:
+        radial-gradient(circle at 15% 15%, #fff 0, transparent 35%),
+        linear-gradient(145deg, #fff8fa, #fce5ed, #fff4e8);
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      color: #d7ae68;
+      opacity: .65;
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: .2; transform: scale(.8); }
+      to { opacity: .9; transform: scale(1.2); }
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 35px 20px 10px;
+    }
+
+    .back {
+      display: inline-block;
+      color: #a56c83;
+      text-decoration: none;
+      font-size: 17px;
+      margin-bottom: 35px;
+      transition: .3s;
+    }
+
+    .back:hover {
+      color: #c28b53;
+      transform: translateX(-5px);
+    }
+
+    .small-title {
+      color: #bd9360;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-family: 'Parisienne', cursive;
+      font-size: clamp(48px, 9vw, 82px);
+      font-weight: 400;
+      color: #bd8199;
+    }
+
+    .decoration {
+      color: #d7ae68;
+      font-size: 25px;
+      margin-top: 8px;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(850px, 90%);
+      margin: 35px auto 70px;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 35px 25px;
+      border: 1px solid rgba(207, 164, 117, .4);
+      border-radius: 25px;
+      background: rgba(255,255,255,.58);
+      box-shadow: 0 15px 45px rgba(174, 119, 142, .09);
+      animation: appear 1.2s ease both;
+    }
+
+    .star-icon {
+      font-size: 43px;
+      color: #d5ad6d;
+      margin-bottom: 15px;
+    }
+
+    .intro h2 {
+      font-size: clamp(27px, 5vw, 38px);
+      font-weight: 500;
+      margin-bottom: 18px;
+      color: #a96e87;
+    }
+
+    .intro p {
+      font-size: 21px;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: auto;
+      color: #795968;
+    }
+
+    .photo-section {
+      margin-top: 45px;
+      text-align: center;
+    }
+
+    .photo-frame {
+      width: min(420px, 100%);
+      margin: 25px auto;
+      padding: 12px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(207, 164, 117, .55);
+      box-shadow: 0 18px 45px rgba(174, 119, 142, .14);
+    }
+
+    .photo-frame img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .photo-caption {
+      color: #bd9360;
+      font-family: 'Parisienne', cursive;
+      font-size: 29px;
+      margin-top: 18px;
+    }
+
+    .message {
+      margin-top: 45px;
+      padding: 35px 28px;
+      text-align: center;
+      border-radius: 25px;
+      background: linear-gradient(135deg, rgba(255,255,255,.8), rgba(255,237,243,.8));
+      border: 1px solid rgba(207, 164, 117, .35);
+    }
+
+    .message p {
+      font-size: 21px;
+      line-height: 1.8;
+    }
+
+    .message .signature {
+      margin-top: 22px;
+      font-family: 'Parisienne', cursive;
+      color: #bd8199;
+      font-size: 31px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 25px;
+      color: #a77d8d;
+      font-size: 16px;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header { padding-top: 25px; }
+      .intro { padding: 28px 20px; }
+      .intro p, .message p { font-size: 19px; }
+      main { margin-top: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <header>
+    <a class="back" href="index.html">← Retour à l'accueil</a>
+
+    <div class="small-title">Une personne précieuse</div>
+    <h1>Une petite étoile</h1>
+    <div class="decoration">✧ ♡ ✧</div>
+  </header>
+
+  <main>
+
+    <section class="intro">
+      <div class="star-icon">✦</div>
+
+      <h2>À travers toi, il y a aussi lui</h2>
+
+      <p>
+        Il y a des personnes qui comptent énormément dans la vie
+        de quelqu'un. Et parmi les plus précieuses, il y a forcément
+        celles qui font partie de son petit monde.
+      </p>
+    </section>
+
+    <section class="photo-section">
+      <div class="photo-frame">
+        <!-- Ajoute ici une photo de son fils uniquement avec son accord -->
+        <img
+          src="photo-fils.jpg"
+          alt="Photo souvenir"
+          onerror="this.parentElement.style.display='none'"
+        >
+      </div>
+
+      <div class="photo-caption">Une petite étoile dans ce monde ♡</div>
+    </section>
+
+    <section class="message">
+      <p>
+        Je sais que ton fils occupe une place immense dans ton cœur.
+        Je voulais simplement lui consacrer un petit espace dans
+        cet univers, parce qu'il fait partie de ce qui est important
+        pour toi.
+      </p>
+
+      <p class="signature">Yanis ♥</p>
+    </section>
+
+  </main>
+
+  <footer>
+    Fait avec beaucoup de douceur ♡
+  </footer>
+
+  <script>
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 35; i++) {
+      const star = document.createElement("span");
+      star.className = "star";
+      star.textContent = "✧";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.fontSize = (10 + Math.random() * 15) + "px";
+      star.style.animationDelay = Math.random() * 3 + "s";
+      stars.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre galerie ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#fff8fb,#f9e5ed,#fffaf5);
+    color:#805b6d;
+    font-family:'Cormorant Garamond',serif;
+}
+
+header{text-align:center;padding:65px 20px 35px}
+
+header small{
+    letter-spacing:5px;
+    color:#bd8b9f;
+    text-transform:uppercase;
+}
+
+h1{
+    font-family:'Parisienne',cursive;
+    font-size:clamp(55px,9vw,85px);
+    font-weight:normal;
+    color:#bd849c;
+    margin:15px 0;
+}
+
+header p{
+    font-size:19px;
+    line-height:1.6;
+}
+
+.line{
+    width:90px;
+    height:1px;
+    background:#d6b47b;
+    margin:20px auto;
+}
+
+.gallery{
+    max-width:1150px;
+    margin:40px auto;
+    padding:0 25px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.photo{
+    padding:7px;
+    border:1px solid #e9cfda;
+    border-radius:13px;
+    background:#fff9fc;
+    box-shadow:0 10px 30px #bd849c20;
+    cursor:pointer;
+    overflow:hidden;
+    transition:.4s;
+    animation:appear .8s both;
+}
+
+.photo:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px #bd849c45;
+}
+
+.photo img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+    display:block;
+    border-radius:8px;
+    transition:.5s;
+}
+
+.photo:hover img{transform:scale(1.04)}
+
+.back{
+    display:block;
+    width:max-content;
+    margin:55px auto;
+    padding:13px 30px;
+    border:1px solid #d6b47b;
+    border-radius:40px;
+    text-decoration:none;
+    color:#9c7185;
+    background:#ffffff90;
+    font-size:18px;
+    transition:.3s;
+}
+
+.back:hover{
+    background:#d9aabd;
+    color:white;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    letter-spacing:3px;
+    color:#bd8b9f;
+}
+
+.viewer{
+    position:fixed;
+    inset:0;
+    background:#160d18ed;
+    z-index:10;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.viewer.active{display:flex}
+
+.viewer img{
+    max-width:85%;
+    max-height:85vh;
+    object-fit:contain;
+    border:2px solid #e6c7d4;
+    border-radius:10px;
+}
+
+.viewer button{
+    position:absolute;
+    border:0;
+    background:#ffffff20;
+    color:white;
+    cursor:pointer;
+    border-radius:50%;
+    width:48px;
+    height:48px;
+    font-size:30px;
+}
+
+.close{top:25px;right:25px}
+.prev{left:25px;top:50%}
+.next{right:25px;top:50%}
+
+.counter{
+    position:absolute;
+    bottom:20px;
+    color:white;
+    letter-spacing:3px;
+}
+
+.petal{
+    position:fixed;
+    top:-30px;
+    color:#dba8bc;
+    opacity:.6;
+    pointer-events:none;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(600deg);opacity:0}
+}
+
+@keyframes appear{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:850px){
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .photo img{height:300px}
+}
+
+@media(max-width:550px){
+    .gallery{grid-template-columns:1fr}
+    .photo img{height:380px}
+    .viewer img{max-width:95%}
+    .prev{left:5px}
+    .next{right:5px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <small>Un petit morceau de notre univers</small>
+    <h1>Malissia ♡</h1>
+    <div class="line"></div>
+    <p>
+        Parce que certains sourires méritent<br>
+        bien plus qu'une simple photo.
+    </p>
+</header>
+
+<main class="gallery">
+
+    <div class="photo"><img src="Malisia%201.jpg" alt="Photo 1"></div>
+    <div class="photo"><img src="Malisia%202.jpg" alt="Photo 2"></div>
+    <div class="photo"><img src="Malisia%203.jpg" alt="Photo 3"></div>
+    <div class="photo"><img src="Malisia%204.jpg" alt="Photo 4"></div>
+    <div class="photo"><img src="Mallissia%205.jpg" alt="Photo 5"></div>
+    <div class="photo"><img src="Malisia%206.jpg" alt="Photo 6"></div>
+    <div class="photo"><img src="Malisia%207.jpg" alt="Photo 7"></div>
+    <div class="photo"><img src="Malisia%208.jpg" alt="Photo 8"></div>
+
+</main>
+
+<a class="back" href="index.html">♡ Retour à l'accueil</a>
+
+<footer>AVEC TENDRESSE · YANIS ♡</footer>
+
+<div class="viewer" id="viewer">
+    <button class="close" onclick="closePhoto()">×</button>
+    <button class="prev" onclick="changePhoto(-1)">‹</button>
+    <img id="largePhoto" src="" alt="Photo agrandie">
+    <button class="next" onclick="changePhoto(1)">›</button>
+    <div class="counter" id="counter"></div>
+</div>
+
+<script>
+const photos=[...document.querySelectorAll('.photo img')];
+const viewer=document.getElementById('viewer');
+const large=document.getElementById('largePhoto');
+const counter=document.getElementById('counter');
+let current=0;
+
+function showPhoto(){
+    large.src=photos[current].src;
+    counter.textContent=(current+1)+' / '+photos.length;
+}
+
+photos.forEach((photo,index)=>{
+    photo.parentElement.onclick=()=>{
+        current=index;
+        showPhoto();
+        viewer.classList.add('active');
+    };
+});
+
+function changePhoto(direction){
+    current=(current+direction+photos.length)%photos.length;
+    showPhoto();
+}
+
+function closePhoto(){
+    viewer.classList.remove('active');
+}
+
+viewer.onclick=e=>{
+    if(e.target===viewer)closePhoto();
+};
+
+document.addEventListener('keydown',e=>{
+    if(!viewer.classList.contains('active'))return;
+    if(e.key==='Escape')closePhoto();
+    if(e.key==='ArrowRight')changePhoto(1);
+    if(e.key==='ArrowLeft')changePhoto(-1);
+});
+
+setInterval(()=>{
+    const petal=document.createElement('div');
+    petal.className='petal';
+    petal.textContent='✿';
+    petal.style.left=Math.random()*100+'vw';
+    petal.style.fontSize=(12+Math.random()*15)+'px';
+    petal.style.animationDuration=(7+Math.random()*8)+'s';
+    document.body.appendChild(petal);
+    setTimeout(()=>petal.remove(),15000);
+},1000);
+</script>
+
+</body>
+</html>

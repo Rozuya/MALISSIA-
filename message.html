@@ -3,149 +3,74 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff0f5">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff2f6">
   <title>Quelques mots pour toi ♡</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 35px 18px;
-      color: #704e5d;
-      font-family: 'Cormorant Garamond', serif;
-      background:
-        radial-gradient(circle at 20% 20%, #fff 0, transparent 35%),
-        linear-gradient(145deg, #fff8fa, #f8e0e9, #fff4e8);
-    }
-
-    .card {
-      width: min(750px, 100%);
-      padding: clamp(28px, 6vw, 60px);
-      text-align: center;
-      border: 1px solid rgba(194, 145, 98, .45);
-      border-radius: 28px;
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 20px 65px rgba(160, 104, 128, .13);
-      animation: reveal 1.4s ease both;
-    }
-
-    .ornament {
-      color: #c9a267;
-      font-size: 25px;
-      letter-spacing: 12px;
-      margin-bottom: 25px;
-    }
-
-    .eyebrow {
-      color: #b58a62;
-      font-size: 12px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-family: 'Parisienne', cursive;
-      font-size: clamp(48px, 10vw, 78px);
-      font-weight: 400;
-      color: #bd8199;
-      margin-bottom: 28px;
-    }
-
-    .message {
-      font-size: clamp(19px, 3vw, 22px);
-      line-height: 1.9;
-      white-space: pre-line;
-      text-align: left;
-    }
-
-    .separator {
-      color: #c9a267;
-      font-size: 25px;
-      margin: 32px 0;
-    }
-
-    .signature {
-      font-family: 'Parisienne', cursive;
-      font-size: 37px;
-      color: #bd8199;
-      margin-top: 20px;
-    }
-
-    .back {
-      display: inline-block;
-      margin-top: 38px;
-      padding: 12px 25px;
-      color: #a66e85;
-      text-decoration: none;
-      border: 1px solid rgba(189,129,153,.5);
-      border-radius: 30px;
-      transition: .3s;
-    }
-
-    .back:hover {
-      background: #f8e4eb;
-      transform: translateY(-3px);
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
 </head>
-
 <body>
 
-  <main class="card">
+  <div class="petals" aria-hidden="true"></div>
 
-    <div class="ornament">✧ ♡ ✧</div>
+  <header class="site-header">
+    <a class="brand" href="index.html">Malissia <span>♡</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="son.html">Une petite étoile</a>
+      <a class="active" href="message.html">Un dernier mot</a>
+    </nav>
+  </header>
 
-    <div class="eyebrow">Un dernier petit mot</div>
+  <main class="page-container narrow-container">
+    <section class="page-heading fade-in">
+      <p class="eyebrow">Un dernier petit mot</p>
+      <h1 class="script-title">Pour toi, Malissia</h1>
+      <div class="ornament">✧ ♡ ✧</div>
+    </section>
 
-    <h1>Pour toi, Malissia</h1>
+    <article class="glass-card final-message fade-in">
+      <p>
+        Je voulais terminer cet univers par quelques mots.
+      </p>
 
-    <div class="message">Je voulais terminer cet univers par quelques mots.
+      <p>
+        Tu as une place particulière dans ma vie, et je voulais
+        prendre le temps de te créer quelque chose qui te ressemble :
+        doux, sincère et rempli d'attention.
+      </p>
 
-Tu as une place particulière dans ma vie, et je voulais prendre le temps de te créer quelque chose qui te ressemble : doux, sincère et rempli d'attention.
+      <p>
+        Je ne sais pas exactement ce que l'avenir nous réserve,
+        mais je suis reconnaissant de t'avoir rencontrée et de
+        pouvoir partager ces moments avec toi.
+      </p>
 
-Je ne sais pas exactement ce que l'avenir nous réserve, mais je sais que je suis reconnaissant de t'avoir rencontrée et de pouvoir partager ces moments avec toi.
+      <p>
+        J'espère que chaque fois que tu ouvriras ce petit site,
+        tu te souviendras simplement que tu comptes et que tu
+        mérites de belles choses.
+      </p>
 
-J'espère que chaque fois que tu ouvriras ce petit site, tu te souviendras simplement que tu comptes et que tu mérites de belles choses.
+      <p>
+        Prends soin de toi et garde toujours cette belle lumière
+        qui te rend unique.
+      </p>
 
-Prends soin de toi et garde toujours cette belle lumière qui te rend unique.</div>
+      <div class="message-divider">♡ ✧ ♡</div>
+      <p class="quote-signature">Yanis ♥</p>
+    </article>
 
-    <div class="separator">♡ ✧ ♡</div>
-
-    <div class="signature">Yanis ♥</div>
-
-    <a class="back" href="index.html">Revenir au début</a>
-
+    <div class="center-action">
+      <a class="secondary-button" href="index.html">Revenir au début ♡</a>
+    </div>
   </main>
+
+  <footer class="site-footer">Avec tendresse, Yanis ♥</footer>
 
 </body>
 </html>
